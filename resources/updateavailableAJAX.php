@@ -16,7 +16,7 @@ if (isset($_POST["lots"])) {
 
   # Run query, get results
   $results = mysqli_query($con, $query)
-	or die("<b>Query failed</b>: "
+  or die("<b>Query failed</b>: "
           . mysqli_error($con)
           . "<br><i>{$query}</i>");
 

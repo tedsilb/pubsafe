@@ -5,15 +5,15 @@
 }
 
 ::-webkit-scrollbar {
-	width: 10px; height:10px;
+  width: 10px; height:10px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #FFFFFF;
+  background: #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #273c75;
+  background: #273c75;
 }
 
 html, body {

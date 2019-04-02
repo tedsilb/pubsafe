@@ -47,7 +47,7 @@ if (isset($_POST["lots"])) {
 
   # Start while loop to fetch results
   while ($row = mysqli_fetch_array($results)) {
-	$content .= "<tr>
+  $content .= "<tr>
                   <td>{$row['lot_no']}</td>
                   <td>{$row['first_name']}</td>
                   <td>{$row['last_name']}</td>

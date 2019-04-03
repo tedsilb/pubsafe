@@ -6,13 +6,7 @@ $data = "";
 $latitude = "";
 $longitude = "";
 $message = "";
-$myMapsApiKey = "xxx";
-
-# Backup API key in case query limit is hit
-# $myMapsApiKey = "xxx";
-
-# Secondary backup API key in case query limit is hit
-# $myMapsApiKey = "xxx";
+$gMapsApiKey = "AIzaSyAk7UAuQEQTnaN-v0wIlwFZPkIdb8h1zRs";
 
 # Connect to database
 require_once("resources/db.php");
@@ -58,9 +52,8 @@ while ($row = mysqli_fetch_array($results)) {
 }
 # Set up JS to pull in actual map
 $script = "<script type='text/javascript'>
-              var myMapsApiKey = 'xxx';
 
-            google.charts.load('current', {'packages': ['map'], 'mapsApiKey': myMapsApiKey });
+            google.charts.load('current', {'packages': ['map'], 'mapsApiKey': {$gMapsApiKey} });
               google.charts.setOnLoadCallback(drawMap);
 
               function drawMap() {

@@ -76,6 +76,7 @@ $script = "<script type='text/javascript'>
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
   <link href="resources/stylesheet.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">

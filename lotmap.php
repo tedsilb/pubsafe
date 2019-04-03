@@ -10,6 +10,7 @@ $gMapsApiKey = "AIzaSyAk7UAuQEQTnaN-v0wIlwFZPkIdb8h1zRs";
 
 # Connect to database
 require_once("resources/db.php");
+require_once("resources/gGeocodeApiKey.php");
 
 # Set up query
 $query = "SELECT lot_no,
@@ -18,7 +19,6 @@ $query = "SELECT lot_no,
                   state,
                   zip
           FROM lot
-          LIMIT 2
           ";
 
 # Run query, get results
@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_array($results)) {
   $address = str_replace(" ", "+", "{$row["street"]}, {$row["city"]}, {$row["state"]}, {$row["zip"]}");
 
   # Get map from Google Maps using data provided
-  $geocode = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=" . $address . "&sensor=false");
+  $geocode = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=" . $address . "&key=" . $gMapsGeocodeApiKey);
   $output = json_decode($geocode, true);
     if ($output["status"] == "OK") {
         $latitude = $output["results"][0]["geometry"]["location"]["lat"];
@@ -47,7 +47,7 @@ while ($row = mysqli_fetch_array($results)) {
               . "</b><br />"
               . addslashes($row["street"]) . "<br />" . addslashes($row["city"]) . ", " . addslashes($row["state"]) . " " . addslashes($row["zip"])."']";
   } else {
-   $message .= $output["status"] . " - " . $address."<br /><br />";
+   $message .= $output["results"] . " - " . $address . "<br /><br />";
   }
 }
 

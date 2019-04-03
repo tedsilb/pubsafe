@@ -9,8 +9,8 @@ $message = "";
 $gMapsApiKey = "AIzaSyAk7UAuQEQTnaN-v0wIlwFZPkIdb8h1zRs";
 
 # Connect to database
-require_once("resources/db.php");
-require_once("resources/gGeocodeApiKey.php");
+require_once("../resources/db.php");
+require_once("../resources/gGeocodeApiKey.php");
 
 # Set up query
 $query = "SELECT lot_no,
@@ -54,22 +54,20 @@ while ($row = mysqli_fetch_array($results)) {
 # Set up JS to pull in actual map
 $script = "<script type='text/javascript'>
               google.charts.load('current', {'packages': ['map'], 'mapsApiKey': '{$gMapsApiKey}' });
-                google.charts.setOnLoadCallback(drawMap);
-
-                function drawMap() {
-                  var data = google.visualization.arrayToDataTable([{$data}]);
-                  var options = {
-                    showTooltip: false,
-                    showInfoWindow: true,
-                    useMapTypeControl: false,
-                    mapType: 'normal',
-                    zoomLevel: 3,
-                    enableScrollWheel: true
-                  };
-
-                  var map = new google.visualization.Map(document.getElementById('mapdiv'));
-                  map.draw(data, options);
+              google.charts.setOnLoadCallback(drawMap);
+              function drawMap() {
+                var data = google.visualization.arrayToDataTable([{$data}]);
+                var options = {
+                  showTooltip: false,
+                  showInfoWindow: true,
+                  useMapTypeControl: false,
+                  mapType: 'normal',
+                  zoomLevel: 3,
+                  enableScrollWheel: true
                 };
+                var map = new google.visualization.Map(document.getElementById('mapdiv'));
+                map.draw(data, options);
+              };
             </script>
             ";
 ?>
@@ -77,68 +75,78 @@ $script = "<script type='text/javascript'>
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Font, CSS -->
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-  <link href="resources/stylesheet.css" rel="stylesheet">
+  <link href="../resources/stylesheet.css" rel="stylesheet">
+
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
-  <link rel="manifest" href="resources/favicon/site.webmanifest">
-  <title>
-    <?php echo $pagename; ?> - Group B4
-  </title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../resources/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../resources/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../resources/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../resources/favicon/site.webmanifest">
+
+  <!-- Title -->
+  <title><?php echo $pagename; ?> - Group B4</title>
+
+  <!-- Scripts -->
   <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
   <?php echo $script;	?>
 </head>
 <body>
   <div class="content-wrapper">
     <div class="header">
-    <p>
-      <?php echo $pagename; ?>
-    </p>
-    <div class="subheader">
-      <p>
-      Creighton University Department of Public Safety
-      <br />
-      Parking Management System
-      </p>
+      <p><?php echo $pagename; ?></p>
+
+      <div class="subheader">
+        <p>
+          Creighton University Department of Public Safety
+          <br />
+          Parking Management System
+        </p>
+      </div>
     </div>
-    </div>
+
     <div class="nav">
-    <div id="nav-left">
-      <a href="index.php">
-      Home
-      </a>
+      <div id="nav-left">
+        <a href="../">
+          Home
+        </a>
+      </div>
+
+      <div>
+        <a href="../studentpark">
+          Student Vehicle Location
+        </a>
+      </div>
+
+      <div>
+        <a href="../officerlot">
+          Lot Officer Assignment
+        </a>
+      </div>
+
+      <div>
+        <a href="../updateavailable">
+          Update Spots Available
+        </a>
+      </div>
+
+      <div>
+        <a href="../lotmap">
+          Lot Map
+        </a>
+      </div>
+
+      <div id="nav-right">
+        <a href="../vehicletreemap">
+          Vehicle Treemap
+        </a>
+      </div>
     </div>
-    <div>
-      <a href="studentpark.php">
-      Student Vehicle Location
-      </a>
-    </div>
-    <div>
-      <a href="officerlot.php">
-      Lot Officer Assignment
-      </a>
-    </div>
-    <div>
-      <a href="updateavailable.php">
-      Update Spots Available
-      </a>
-    </div>
-    <div>
-      <a href="lotmap.php">
-      Lot Map
-      </a>
-    </div>
-    <div id="nav-right">
-      <a href="vehicletreemap.php">
-      Vehicle Treemap
-      </a>
-    </div>
-    </div>
+
     <div class="mapbody">
-    <?php echo $message; ?>
-    <div id="mapdiv"></div>
+      <?php echo $message; ?>
+      <div id="mapdiv"></div>
     </div>
   </div>
 </body>

@@ -6,7 +6,7 @@ $lotnolist = "<option>Select a lot:</option>";
 $updatemessage = "";
 
 # Set up database connection
-require_once("./resources/db.php");
+require_once("../resources/db.php");
 
 # Set up query
 $query = "SELECT lot_no FROM lot ORDER BY 1 ASC;";
@@ -29,7 +29,7 @@ mysqli_free_result($results);
 if(isset($_POST['submit'])){
 
   # Set up database connection
-  require_once("resources/db.php");
+  require_once("../resources/db.php");
 
   # Set variables to POSTed values
   $spotsavailable = $_POST["spotsAvailable"];
@@ -59,17 +59,21 @@ mysqli_close($con);
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Font, CSS -->
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-  <link href="resources/stylesheet.css" rel="stylesheet">
+  <link href="../resources/stylesheet.css" rel="stylesheet">
+
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
-  <link rel="manifest" href="resources/favicon/site.webmanifest">
-  <title>
-    <?php echo $pagename; ?> - Group B4
-  </title>
-  <script src="resources/jquery-3.3.1.min.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="../resources/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../resources/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../resources/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../resources/favicon/site.webmanifest">
+
+  <!-- Title -->
+  <title><?php echo $pagename; ?> - Group B4</title>
+
+  <!-- Scripts -->
+  <script src="../resources/jquery-3.3.1.min.js"></script>
   <script>
     // Checks whether the div with ID lotsDiv has changed
     $(document).on("change", "#lotsDiv", function(e) {
@@ -78,7 +82,7 @@ mysqli_close($con);
       // Calls PHP page using AJAX request and the selected value as part of the POST request
       $.ajax({
         type: "POST",  // Using an AJAX call type of POST
-        url: "resources/updateavailableAJAX.php",  // URL of the AJAX file to request
+        url: "../resources/updateavailableAJAX.php",  // URL of the AJAX file to request
         data: { lots: lots },  // Passes variable to the next page
         // Upon successful AJAX request, return what PHP echoes, store it in variable called output
         success: function(output) {
@@ -92,65 +96,71 @@ mysqli_close($con);
 <body>
   <div class="content-wrapper">
     <div class="header">
-    <p>
-      <?php echo $pagename; ?>
-    </p>
-    <div class="subheader">
-      <p>
-      Creighton University Department of Public Safety
-      <br />
-      Parking Management System
-      </p>
+      <p><?php echo $pagename; ?></p>
+
+      <div class="subheader">
+        <p>
+          Creighton University Department of Public Safety
+          <br />
+          Parking Management System
+        </p>
+      </div>
     </div>
-    </div>
+
     <div class="nav">
-    <div id="nav-left">
-      <a href="index.php">
-      Home
-      </a>
-    </div>
-    <div>
-      <a href="studentpark.php">
-      Student Vehicle Location
-      </a>
-    </div>
-    <div>
-      <a href="officerlot.php">
-      Lot Officer Assignment
-      </a>
-    </div>
-    <div>
-      <a href="updateavailable.php">
-      Update Spots Available
-      </a>
-    </div>
-    <div>
-      <a href="lotmap.php">
-      Lot Map
-      </a>
-    </div>
-    <div id="nav-right">
-      <a href="vehicletreemap.php">
-      Vehicle Treemap
-      </a>
-    </div>
+      <div id="nav-left">
+        <a href="../">
+          Home
+        </a>
+      </div>
+
+      <div>
+        <a href="../studentpark">
+          Student Vehicle Location
+        </a>
+      </div>
+
+      <div>
+        <a href="../officerlot">
+          Lot Officer Assignment
+        </a>
+      </div>
+
+      <div>
+        <a href="../updateavailable">
+          Update Spots Available
+        </a>
+      </div>
+
+      <div>
+        <a href="../lotmap">
+          Lot Map
+        </a>
+      </div>
+
+      <div id="nav-right">
+        <a href="../vehicletreemap">
+          Vehicle Treemap
+        </a>
+      </div>
     </div>
     <div class="body" id="updatespotsbody">
-    <p>Select a lot to update spots available in:</p>
-    <form method="post" id="updatespotsform">
-      <div id="lotsDiv">
-      <p>
-        Lot:
+      <p>Select a lot to update spots available in:</p>
+
+      <form method="post" id="updatespotsform">
+        <div id="lotsDiv">
+          <p>Lot:</p>
+          <select id="lots" name="lotno">
+            <?php echo $lotnolist; ?>
+          </select>
+        </div>
+
+        <div id="lotResults"></div>
+      </form>
+
+      <p id="updatemessagep">
+        <?php echo $updatemessage; ?>
       </p>
-      <select id="lots" name="lotno">
-        <?php echo $lotnolist; ?>
-      </select>
-      </div>
-      <div id="lotResults"></div>
-    </form>
-    <p id="updatemessagep">
-      <?php echo $updatemessage; ?>
-    </p>
     </div>
   </div>
 </body>

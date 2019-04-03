@@ -3,7 +3,7 @@
 if (isset($_POST["lots"])) {
 
   # Connect to database
-  require_once("../resources/db.php");
+  require_once("db.php");
 
   # Set up POSTed variable
   $lotNo = mysqli_real_escape_string($con, $_POST["lots"]);

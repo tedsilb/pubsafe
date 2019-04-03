@@ -50,29 +50,28 @@ while ($row = mysqli_fetch_array($results)) {
    $message .= $output["status"] . " - " . $address."<br /><br />";
   }
 }
+
 # Set up JS to pull in actual map
 $script = "<script type='text/javascript'>
+              google.charts.load('current', {'packages': ['map'], 'mapsApiKey': '{$gMapsApiKey}' });
+                google.charts.setOnLoadCallback(drawMap);
 
-            google.charts.load('current', {'packages': ['map'], 'mapsApiKey': {$gMapsApiKey} });
-              google.charts.setOnLoadCallback(drawMap);
+                function drawMap() {
+                  var data = google.visualization.arrayToDataTable([{$data}]);
+                  var options = {
+                    showTooltip: false,
+                    showInfoWindow: true,
+                    useMapTypeControl: false,
+                    mapType: 'normal',
+                    zoomLevel: 3,
+                    enableScrollWheel: true
+                  };
 
-              function drawMap() {
-                var data = google.visualization.arrayToDataTable([{$data}]);
-                var options = {
-                  showTooltip: false,
-                  showInfoWindow: true,
-                  useMapTypeControl: false,
-                  mapType: 'normal',
-                  zoomLevel: 3,
-                  enableScrollWheel: true
+                  var map = new google.visualization.Map(document.getElementById('mapdiv'));
+                  map.draw(data, options);
                 };
-
-                var map = new google.visualization.Map(document.getElementById('mapdiv'));
-
-                map.draw(data, options);
-              };
-          </script>
-          ";
+            </script>
+            ";
 ?>
 
 <!DOCTYPE html>

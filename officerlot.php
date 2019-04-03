@@ -59,25 +59,24 @@ mysqli_close($con);
   <title>
     <?php echo $pagename; ?> - Group B4
   </title>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="resources/jquery-3.3.1.min.js"></script>
   <script>
     // Checks whether the div with ID lotsDiv has changed
     $(document).on("change", "#officerLotsDiv", function(e) {
-    // Grabs value of the drop-down with ID lots
-    var lots = $("#lots").val();
-    // Calls PHP page using AJAX request and the selected value as part of the POST request
-    $.ajax({
-      type: "POST",       // Using an AJAX call type of POST
-      url: "AJAX/officerlotAJAX.php",    // URL of the AJAX file to request
-      data: {
-      lots: lots    // Passes variable to the next page
-      },
-      // Upon successful AJAX request, return what PHP echoes, store it in variable called output
-      success: function(output) {
-      // Puts output in div called lotResults
-      $("#lotResults").html(output);
-      }
-    });
+      // Grabs value of the drop-down with ID lots
+      var lots = $("#lots").val();
+      console.log('onchange called')
+      // Calls PHP page using AJAX request and the selected value as part of the POST request
+      $.ajax({
+        type: "POST",       // Using an AJAX call type of POST
+        url: "resources/officerlotAJAX.php",    // URL of the AJAX file to request
+        data: { lots: lots },  // Passes variable to the next page
+        // Upon successful AJAX request, return what PHP echoes, store it in variable called output
+        success: function(output) {
+        // Puts output in div called lotResults
+        $("#lotResults").html(output);
+        }
+      });
     });
   </script>
   </head>

@@ -54,8 +54,13 @@ mysqli_close($con);
 
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
   <link href="resources/stylesheet.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
+  <link rel="manifest" href="resources/favicon/site.webmanifest">
   <title>
     <?php echo $pagename; ?> - Group B4
   </title>
@@ -79,8 +84,8 @@ mysqli_close($con);
       });
     });
   </script>
-  </head>
-  <body>
+</head>
+<body>
   <div class="content-wrapper">
     <div class="header">
     <p>
@@ -139,5 +144,5 @@ mysqli_close($con);
     <div id="lotResults"></div>
     </div>
   </div>
-  </body>
+</body>
 </html>

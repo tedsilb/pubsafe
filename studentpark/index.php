@@ -1,6 +1,6 @@
 <?php
 # Declare variables, get set up
-$pagename = "View Student Vehicle Location";
+$pagename = "View Student Vehicle Location (DEMO)";
 $resultMessage = "";
 $table = "";
 

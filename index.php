@@ -1,5 +1,5 @@
 <?php
-$pagename = "Home";
+$pagename = "Home (DEMO)";
 ?>
 
 <!DOCTYPE html>

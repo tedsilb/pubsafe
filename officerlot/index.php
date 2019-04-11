@@ -1,5 +1,5 @@
 <?php
-$pagename = "View Lot Officer Assignment";
+$pagename = "View Lot Officer Assignment (DEMO)";
 $content = "";
 $lotnolist = "<option>Select a lot:</option>";
 $updatemessage = "";

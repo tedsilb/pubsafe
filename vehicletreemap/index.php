@@ -1,6 +1,6 @@
 <?php
 # Set up variables
-$pagename = "Vehicle Treemap";
+$pagename = "Vehicle Treemap (DEMO)";
 $address = "";
 $data = "";
 $latitude = "";

@@ -1,6 +1,6 @@
 <?php
 # Set up variables
-$pagename = "Lot Map";
+$pagename = "Lot Map (DEMO)";
 $address = "";
 $data = "";
 $latitude = "";

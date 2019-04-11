@@ -1,6 +1,6 @@
 <?php
 # Declare variables, get set up
-$pagename = "Update Spots Available";
+$pagename = "Update Spots Available (DEMO)";
 $table = "";
 $lotnolist = "<option>Select a lot:</option>";
 $updatemessage = "";

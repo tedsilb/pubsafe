@@ -1,6 +1,6 @@
 # Public Safety Website Project
 
-[![CodeFactor](https://www.codefactor.io/repository/github/tedsilb/pubsafe/badge)](https://www.codefactor.io/repository/github/tedsilb/pubsafe) [![Total alerts](https://img.shields.io/lgtm/alerts/g/tedsilb/pubsafe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tedsilb/pubsafe/alerts/)
+[![CodeFactor](https://www.codefactor.io/repository/github/tedsilb/pubsafe/badge)](https://www.codefactor.io/repository/github/tedsilb/pubsafe)
 
 Project done with three teammates in Spring 2018 for BIA 354 at Creighton University.
 
